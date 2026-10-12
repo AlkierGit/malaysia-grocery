@@ -1,0 +1,15 @@
+<?php
+// Connect to the database
+require_once "dbconfig.php";
+// Select one grocery item using its ID
+$sql = "SELECT * FROM grocery_items WHERE item_id = :id";
+$stmt = $conn->prepare($sql);
+// Set the item ID to 1
+$stmt->execute(['id' => 1]);
+// Fetch only one record
+$item = $stmt->fetch(PDO::FETCH_ASSOC);
+// Display the record
+echo "<pre>";
+print_r($item);
+echo "</pre>";
+?>
